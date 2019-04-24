@@ -1,0 +1,16 @@
+extends ../layouts/common
+block content
+	h2 View user
+		a.badge.badge-light.ml-2(href="/users") Back
+	.row.mt-5
+		.col-3
+			img.mr-3(src='../' + user.avatar, width="254", height="254")
+		.col-9.pl-4
+			label.font-weight-bold Name:
+			span.ml-2=user.name
+			br 
+			label.font-weight-bold Phone:
+			span.ml-2=user.phone 
+			br
+			label.font-weight-bold Email:
+			span.ml-2=user.email 

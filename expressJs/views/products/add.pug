@@ -1,0 +1,15 @@
+extends ../layouts/common
+block content
+	h2 New Product
+
+	form(method="POST", enctype="multipart/form-data")
+		.form-group.col-md-6
+			label(for='name') Name
+			input#name.form-control(type='text', placeholder='Name', name='name')
+		.form-group.col-md-6
+			label(for='text') Summary
+			textarea#text.form-control(type='text', placeholder='Text ...', name='text')
+		.form-group.col-md-6
+			label(for='image') Image
+			input#image.form-control-file(type='file', name='image')
+		button.btn.btn-primary.mt-3.ml-3 Creat

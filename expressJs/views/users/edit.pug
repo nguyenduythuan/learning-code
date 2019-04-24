@@ -1,0 +1,23 @@
+extends ../layouts/common
+block content
+	h2 Edit user
+
+	form(method="POST", enctype="multipart/form-data")
+		if errors
+			each error in errors
+				.form-group.col-md-6
+					.alert.alert-danger= error
+		.form-group.col-md-6
+			label(for='name') Name
+			input#name.form-control(type='text', placeholder='Name', name='name', value=user.name )
+		.form-group.col-md-6
+			label(for='phone') Phone
+			input#phone.form-control(type='text', placeholder='Phone', name='phone', value=user.phone)
+		.form-group.col-md-6
+			label(for='email') Email
+			input#email.form-control(type='text', placeholder='Email', name='email', value=user.email, readonly)
+		.form-group.col-md-6
+			img.m-2(src='../../'+ user.avatar, width='50')
+			label(for='avatar') Avatar
+			input#avatar.form-control-file(type='file', name='avatar', value=user.avatar)
+		button.btn.btn-primary.mt-3.ml-3 Save

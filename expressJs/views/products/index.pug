@@ -1,0 +1,53 @@
+extends ../layouts/common
+block content
+	.row.mt-5
+		if value
+			form.form-inline.ml-auto(action="/products/search", method="GET")
+				input.form-control.mr-sm-2(type='text', placeholder='Search', aria-label='Search', name="q", value=value ? value : '')
+				button.btn.btn-primary.my-2.my-sm-0.mr-3(type='submit') Search
+		else
+			if user
+				a.btn.btn-primary.mb-3.ml-3(href='/products/add') New Product
+			form.form-inline.ml-auto(action="products/search", method="GET")
+				input.form-control.mr-sm-2(type='text', placeholder='Search', aria-label='Search', name="q", value=value ? value : '')
+				button.btn.btn-primary.my-2.my-sm-0.mr-3(type='submit') Search
+	.row
+		each product in products
+			.card.mr-2.mb-5.ml-3(style='width: 16em;')
+				img.card-img-top(src='../' + product.image, alt='Card image cap', height='254')
+				.card-body
+					h5.card-title= product.name
+					p.card-text= product.text 
+					a.btn.btn-primary(href='/cart/add/' + product.id) Add to cart
+	nav.float-xl-right(aria-label='Page navigation example')
+		- var link = '/products?page='
+		- var link2 = '/products/search?q=' + value
+			if (pages != '')
+				ul.pagination
+					if (current == 1)
+						li.page-item.disabled
+							a.page-link Previous
+					else
+						li.page-item
+							if(value)
+								a.page-link(href=link2 +'&page='+ Number(current-1)) Previous
+							else
+								a.page-link(href=link + Number(current-1)) Previous
+					each page in pages
+						if(current == page)
+							li.page-item.active
+								a.page-link=page
+						else
+							if(value)
+								li.page-item
+									a.page-link(href=link2 +'&page='+ page)=page
+							else
+								li.page-item
+									a.page-link(href=link + page)=page	
+					if (current == Math.max(...pages))
+						li.page-item.disabled
+							a.page-link Next
+					else
+						li.page-item
+							a.page-link(href=link + Number(current+1)) Next
+				

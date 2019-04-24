@@ -1,0 +1,16 @@
+extends ../layouts/common
+block content
+	h2 Login
+
+	form(method="POST")
+		if errors
+			each error in errors
+				.form-group.col-md-6
+					.alert.alert-danger= error
+		.form-group.col-md-6
+			label(for='email') Email
+			input#email.form-control(type='email', placeholder='Email', name='email', value=values ? values.email : '' )
+		.form-group.col-md-6
+			label(for='password') Password
+			input#password.form-control(type='password', placeholder='Password', name='password', value=values ? values.password : '')
+			button.btn.btn-primary.mt-3 Login

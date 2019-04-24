@@ -1,0 +1,25 @@
+extends ../layouts/common
+block content
+	h2 Create user
+
+	form(action="/users/create", method="POST", enctype="multipart/form-data")
+		if errors
+			each error in errors
+				.form-group.col-md-6
+					.alert.alert-danger= error
+		.form-group.col-md-6
+			label(for='name') Name
+			input#name.form-control(type='text', placeholder='Name', name='name', value=values ? values.name : '' )
+		.form-group.col-md-6
+			label(for='phone') Phone
+			input#phone.form-control(type='text', placeholder='Phone', name='phone', value=values ? values.phone : '')
+		.form-group.col-md-6
+			label(for='email') Email
+			input#email.form-control(type='text', placeholder='Email', name='email', value=values ? values.email : '')
+		.form-group.col-md-6
+			label(for='password') Password
+			input#password.form-control(type='password', placeholder='Password', name='password', value=values ? values.password : '')
+		.form-group.col-md-6
+			label(for='avatar') Avatar
+			input#avatar.form-control-file(type='file', name='avatar')
+		button.btn.btn-primary.mt-3.ml-3 Create

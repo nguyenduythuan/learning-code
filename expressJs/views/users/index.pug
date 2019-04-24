@@ -1,0 +1,62 @@
+extends ../layouts/common
+block content
+	h2 Users
+	.d-flex
+		if value
+			form.form-inline.ml-auto(action="/users/search", method="GET")
+				input.form-control.mr-sm-2(type='text', placeholder='Search', aria-label='Search', name="q", value=value ? value : '')
+				button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Search
+		else
+			a.btn.btn-success.mb-3(href='users/create') New
+			form.form-inline.ml-auto(action="users/search", method="GET")
+				input.form-control.mr-sm-2(type='text', placeholder='Search', aria-label='Search', name="q", value=value ? value : '')
+				button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Search
+	table.table
+		tr
+			th Avatar
+			th Name
+			th Email
+			th Phone
+			th.text-center Action
+		each user in users
+			tr
+				td
+					img(src= user.avatar, width="32").rounded-circle
+				td= user.name
+				td=user.email
+				td= user.phone
+				td.text-center
+					a.btn.btn-light(href='/users/' + user.id) View
+					a.btn.btn-light.ml-2(href='/users/edit/' + user.id) Edit
+					a.btn.btn-light.ml-2(href='/users/delete/' + user.id) Delete
+	nav.float-xl-right(aria-label='Page navigation example')
+		- var link = '/users?page='
+		- var link2 = '/users/search?q=' + value
+			if (pages != '')
+				ul.pagination
+					if (current == 1)
+						li.page-item.disabled
+							a.page-link Previous
+					else
+						li.page-item
+							if(value)
+								a.page-link(href=link2 +'&page='+ Number(current-1)) Previous
+							else
+								a.page-link(href=link + Number(current-1)) Previous
+					each page in pages
+						if(current == page)
+							li.page-item.active
+								a.page-link=page
+						else
+							if(value)
+								li.page-item
+									a.page-link(href=link2 +'&page='+ page)=page
+							else
+								li.page-item
+									a.page-link(href=link + page)=page	
+					if (current == Math.max(...pages))
+						li.page-item.disabled
+							a.page-link Next
+					else
+						li.page-item
+							a.page-link(href=link + Number(current+1)) Next

@@ -1,0 +1,21 @@
+extends ../layouts/common
+block content
+	-var i = 0
+	.mt-5
+		table.table
+			thead
+				tr
+					th(scope='col') #
+					th(scope='col') Image
+					th(scope='col') Name product
+					th(scope='col') Amount
+			tbody
+				if sum
+					each cart in cartProducts
+						tr
+							th(scope='col')= ++i
+							td
+								img(src=cart.image, width='50em')
+							td=cart.name
+							td=cart.amount
+		a.btn.btn-primary.float-right(href='/products') Back
