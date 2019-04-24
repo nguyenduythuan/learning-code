@@ -1,0 +1,1 @@
+Use axios for get, post, put, delete product 
