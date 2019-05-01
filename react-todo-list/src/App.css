@@ -1,0 +1,104 @@
+.App {
+  text-align: center;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.name {
+  font-size: 100px;
+  color: rgb(167, 82, 82);
+  opacity: .3;
+}
+
+.tab {
+  width: 600px;
+  height: auto;
+  border: 3px solid rgba(94, 93, 93, 0.26);
+  background-color: #fffdff;
+  padding: 0px;
+  -webkit-box-shadow: 1px 10px 25px 0px rgba(189,178,189,0.76);
+  -moz-box-shadow: 1px 10px 25px 0px rgba(189,178,189,0.76);
+  box-shadow: 1px 10px 25px 0px rgba(189,178,189,0.76);
+}
+.Input {
+  width: 90%;
+  height: 70px;
+  font-size: 26px;
+  text-align: left;
+  border: none;
+  font-style: italic;
+  opacity: .7;
+}
+.Input:focus {
+	outline:0;
+}
+ul {
+  list-style-type: none;
+}
+.App  div {
+  border-bottom: 2px solid rgba(114, 112, 112, 0.336);
+}
+.button {
+  opacity: 0.5;
+  padding: 10px;
+  display: flex;
+}
+.Complated {
+  margin-right: 50px;
+  margin-left: 20px;
+}
+.Acctive {
+  padding-left: 10px;
+  margin-left: 20px;
+}
+.check {
+  border: 1px solid darkgray;
+}
+.All {
+  margin-left: 80px;
+}
+.li-input {
+  display: flex;
+  align-items: center;
+}
+.li-input img {
+  margin-left: 25px;
+  opacity: 0.4;
+}
+.items-left {
+  margin-left: 10px;
+}
+.Clear:hover {
+  text-decoration: underline;
+}
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
