@@ -6,8 +6,8 @@ import tick from './image/checked.svg';
 
 
 class App extends React.Component {
-  constructor () {
-    super();
+  constructor (props) {
+    super(props);
     if(!localStorage.getItem('todoItem')){
       localStorage.setItem('newItem', '');
       localStorage.setItem('currentFilter', 'All');
@@ -25,6 +25,7 @@ class App extends React.Component {
         ...arr
       ]
     };
+    this.inputElement = React.createRef();    // Tạo điều khiển DOM
     this.onKeyUp = this.onKeyUp.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onClickAll = this.onClickAll.bind(this);
@@ -33,6 +34,11 @@ class App extends React.Component {
     this.onClickTick = this.onClickTick.bind(this);
     this.onClickClear = this.onClickClear.bind(this);
   };
+
+  componentDidMount(){    //hàm khởi tạo dom khi render xong 
+    this.inputElement.current.focus();    //curent là hiển thị cho dom html
+  }
+
   onItemClicked(item){
     return (event) => {
       const isComplate = item.isComplate;
@@ -189,7 +195,7 @@ class App extends React.Component {
               <img src={ tick } alt="tick" onClick={this.onClickTick}></img>
               <input type="text" className="Input" onKeyUp={this.onKeyUp} 
               value={newItem} onChange={this.onChange} 
-              placeholder="What needs to be done?"></input>
+              placeholder="What needs to be done?" ref={this.inputElement}></input>
             </li>
           </div>
             {

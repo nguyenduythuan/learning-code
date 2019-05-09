@@ -1,5 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
+import propTypes from 'prop-types';
+
 import './TodoItem.css';
 import CheckComplate from '../image/CheckComplate.svg';
 import CheckImg from '../image/CheckImg.svg';
@@ -26,4 +28,13 @@ class TodoItem extends React.Component {
     }
 }
 
-export default TodoItem;
+TodoItem.propTypes = {
+    item: propTypes.shape({
+        title: propTypes.string,    //kiểu string
+        isComplat: propTypes.bool   //kiểu true false
+    }),     // định ghĩa item là một object
+    onClick: propTypes.func,    //kiểu function 
+    onClickDelete: propTypes.func 
+};
+
+export default TodoItem; 
